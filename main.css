@@ -46,6 +46,8 @@ button {
 .about__sun-image {
     width: 100px;
     height: 100px;
+    animation: rotation 10s infinite linear;
+    position: absolute;
   }
 
 .about {
@@ -183,4 +185,82 @@ footer {
 
 .footer__links a {
     margin-bottom: 15px;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+@media (min-width: 320px) and (max-width: 720px) {
+
+    .about, .form, footer, header{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    
+    .header__logo {
+        height: 20px;
+    }
+    
+    .about, .form {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    
+    .about__image {
+        width: 280px;
+    }
+    
+    .about__sun-image {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .about h1, .form h1 {
+        font-size: 36px;
+        line-height: 40px;
+    }
+    
+    .about {
+        flex-direction: column-reverse;
+    }
+
+    .footer__container {
+        flex-direction: column;
+    }
+} 
+
+@media (min-width:720px) and (max-width:1024px) {
+    .about, .form, footer, header{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .about h1, .form h1 {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .about__image {
+        width: 280px;
+    }
+    
+    .about__sun-image {
+        width: 75px;
+        height: 75px;
+    }
+    
 }
