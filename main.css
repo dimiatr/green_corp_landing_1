@@ -60,6 +60,7 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
 }
 
 .about h1 {
@@ -349,6 +350,13 @@ footer {
 
 .footer__links a {
     margin-bottom: 15px;
+}
+
+.orb-canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
 }
 
 @keyframes rotation {
