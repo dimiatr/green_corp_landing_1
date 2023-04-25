@@ -22,8 +22,6 @@ function increaseNumberAnimationStep (i, element, endNumber) {
       increaseNumberAnimationStep(0, element, 5000); 
   }
 
-  initIncreaseNumberAnimation();
-
   const other = document.querySelector('#budget');
 
   other.addEventListener('change', function handleSelectChange(event) {
@@ -50,3 +48,48 @@ function increaseNumberAnimationStep (i, element, endNumber) {
       form.removeChild(otherInput);
     }
   } )
+
+  let animationInited = false;
+
+
+  function update_scroll() {
+    if (window.scrollY > 0) {
+      document.querySelector('header').classList.add('header__scrolled');
+    } else {
+      document.querySelector('header').classList.remove('header__scrolled');
+    }
+
+    let windowBottomPosition = window.scrollY + window.innerHeight;
+    let countElementPosition = document.querySelector('.features__clients-count').offsetTop;
+    if (windowBottomPosition >= countElementPosition && !animationInited) {
+      animationInited = true;
+      initIncreaseNumberAnimation();
+    }
+  }
+
+
+  window.addEventListener('scroll', update_scroll);
+
+  function onLinkClick(event) {
+    event.preventDefault();
+
+    document.querySelector(event.target.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
+  function addSmoothScroll(anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+   
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  }
+   
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    addSmoothScroll(anchor);
+  });
+
+  addSmoothScroll(document.querySelector('.more-button'));
